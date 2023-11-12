@@ -1,33 +1,40 @@
 package com.example.duanmishoes.model;
+
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.UUID;
-@Entity
-@Table(name = "voucher")
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString
-@Data
-public class Voucher {
+@Table(name = "nhanVien")
+@Entity
+public class NhanVien {
 
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+    @ManyToOne
+    @JoinColumn(name = "chuc_vu_id", referencedColumnName = "id")
+    private ChucVu chucVu;
     private String ma;
-    private String phuongThuc;
-    private Date ngayBatDau;
-    private Date ngayKetThuc;
-    private int mucDo;
-    private BigDecimal giamToiDa;
-    private BigDecimal dieuKien;
+    private String ten;
+    private String anh;
+    private String gioiTinh;
+    private Date ngaySinh;
+    private String sdt;
+    private String diaChi;
+    private String matKhau;
     private String nguoiTao;
     private String nguoiSua;
     private Date ngayTao;
     private Date ngaySua;
-    private int trangThai;
+    private Integer trangThai;
+
+
 }
