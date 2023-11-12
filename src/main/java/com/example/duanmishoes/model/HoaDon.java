@@ -5,26 +5,32 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.UUID;
+
 @Entity
-@Table(name = "voucher")
+@Table(name = "hoaDon")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@Setter
 @ToString
 @Data
-public class Voucher {
-
+public class HoaDon {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     private String ma;
-    private String phuongThuc;
-    private Date ngayBatDau;
-    private Date ngayKetThuc;
-    private int mucDo;
-    private BigDecimal giamToiDa;
-    private BigDecimal dieuKien;
+    @ManyToOne
+    @JoinColumn(name = "nhan_vien_id")
+    private NhanVien nhanVien;
+    @ManyToOne
+    @JoinColumn(name = "khach_hang_id")
+    private KhachHang khachHang;
+    @ManyToOne
+    @JoinColumn(name = "voucher_id")
+    private Voucher voucher;
+    private Date ngayMua;
+    private BigDecimal giaGoc;
+    private BigDecimal giaGiamGia;
+    private BigDecimal thanhTien;
     private String nguoiTao;
     private String nguoiSua;
     private Date ngayTao;
