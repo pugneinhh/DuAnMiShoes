@@ -3,6 +3,8 @@ package com.example.duanmishoes.model;
 import org.springframework.beans.factory.annotation.Value;
 
 public interface AdminHoaDonResponn {
+    @Value("#{target.idHD}")
+    String getIdHD();
     @Value("#{target.ma}")
     String getMa();
 
@@ -11,7 +13,8 @@ public interface AdminHoaDonResponn {
 
     @Value("#{target.tenKH}")
     String getTenKH();
-
+    @Value("#{target.loaiHD}")
+    String getLoaiHD();
     @Value("#{target.sdt}")
     String getSDT();
     @Value("#{target.ngayMua}")
