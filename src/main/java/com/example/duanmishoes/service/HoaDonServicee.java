@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import java.sql.Date;
 import java.util.List;
 import java.util.UUID;
-
 @Service
 @RequiredArgsConstructor
 public class HoaDonServicee {
@@ -29,6 +28,7 @@ public class HoaDonServicee {
      public AdminHoaDonResponn getByID(UUID id){
         return hoaDonResponn.detailHD(id);
     }
+
 //    public LichSuHoaDon add(LichSuHoaDon kh){
 //        return khachHangRespon.save(kh);
 //    }

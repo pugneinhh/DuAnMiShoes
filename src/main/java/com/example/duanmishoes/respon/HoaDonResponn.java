@@ -4,6 +4,9 @@ import com.example.duanmishoes.model.AdminHoaDonResponn;
 import com.example.duanmishoes.model.HoaDon;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+
+
+
 import org.springframework.data.repository.query.Param;
 
 import java.sql.Date;
@@ -26,6 +29,7 @@ public interface HoaDonResponn extends JpaRepository<HoaDon, UUID> {
             			JOIN nhan_vien nv ON nv.id = hd.nhan_vien_id  where hd.trang_thai=:tt ORDER BY hd.ma DESC """,
             nativeQuery = true)
     List<AdminHoaDonResponn> getALLHDTT(int tt );
+
 //    @Query("select o from KhachHang o where o.ten=:keyword or o.ma=:keyword")List<KhachHang> search(@Param("keyword")String keyword)
     @Query(value = """
             SELECT hd.id AS idHD,  hd.ma AS ma, nv.ma as maNV, kh.ten as tenKH,kh.so_dien_thoai as sdt,
@@ -42,4 +46,5 @@ public interface HoaDonResponn extends JpaRepository<HoaDon, UUID> {
             			JOIN nhan_vien nv ON nv.id = hd.nhan_vien_id  where hd.id=:key """,
             nativeQuery = true)
     AdminHoaDonResponn detailHD(UUID key);
+
 }
