@@ -1,0 +1,18 @@
+package com.example.duanmishoes.service;
+
+import com.example.duanmishoes.model.AdminDoCaoRespon;
+import com.example.duanmishoes.respon.DoCaoRespon;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class DoCaoService {
+    @Autowired
+    private DoCaoRespon doCaoRespon;
+
+    public List<AdminDoCaoRespon> getALLDC(){
+        return doCaoRespon.getALLDC();
+    }
+}
