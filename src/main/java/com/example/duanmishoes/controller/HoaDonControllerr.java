@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
+
 @CrossOrigin("http://localhost:3000/")
 @RestController
 @RequestMapping("/hoa-don")
@@ -27,6 +28,9 @@ public class HoaDonControllerr {
     }
     @GetMapping("{tt}")
     public ResponseEntity<?> getALLTT(@PathVariable("tt") int tt){
+
+    
+
         return  ResponseEntity.ok(hoaDonService.getALLTT(tt));
     }
     @GetMapping("/detail-hoa-don/{idHD}")
@@ -44,6 +48,7 @@ public class HoaDonControllerr {
         java.sql.Date BD= new java.sql.Date(d1.getTime());
         java.sql.Date KT= new java.sql.Date(d2.getTime());
         return  ResponseEntity.ok(hoaDonService.timHoaDon(tim,loai,BD,KT));
+
     }
 //    @PostMapping("/add")
 //    public ResponseEntity<?> add(@RequestBody LichSuHoaDon khachHang){
