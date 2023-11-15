@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class VoucherService {
@@ -21,5 +22,5 @@ public class VoucherService {
     public Voucher addVoucher(Voucher v){
         return vr.save(v);
     }
-
+    public Voucher detailVoucher(UUID id){return vr.getById(id);}
 }
