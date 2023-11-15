@@ -33,7 +33,7 @@ public interface AdminCTSPRespon {
     String getTenH();
 
     @Value("#{target.soLuong}")
-    int getTenSoLuong();
+    int getSoLuong();
 
     @Value("#{target.giaBan}")
     BigDecimal getGiaBan();
