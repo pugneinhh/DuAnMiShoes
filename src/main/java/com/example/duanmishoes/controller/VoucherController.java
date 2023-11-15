@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.UUID;
 
 @CrossOrigin("http://localhost:3000/")
 @RestController
@@ -25,8 +26,18 @@ public class VoucherController {
     }
     @PostMapping("/add")
     public ResponseEntity<?> add(@RequestBody Voucher v){
-        v.setNgayBatDau(new Date(new java.util.Date().getTime()));
+        v.setNgayTao(new Date(new java.util.Date().getTime()));
         return  ResponseEntity.ok(vs.addVoucher(v));
+    }
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> update(@PathVariable("id") String id,@RequestBody Voucher v){
+        v.setId(UUID.fromString(id));
+        v.setNgaySua(new Date(new java.util.Date().getTime()));
+        return  ResponseEntity.ok(vs.addVoucher(v));
+    }
+    @PostMapping("/detail/{id}")
+    public ResponseEntity<?> add(@PathVariable("id") String id){
+        return  ResponseEntity.ok(vs.detailVoucher(UUID.fromString(id)));
     }
     @GetMapping("/tim-voucher/{key}/{ngayBD}/{ngayKT}")
     public ResponseEntity<?> tim(@PathVariable("key")String key,
