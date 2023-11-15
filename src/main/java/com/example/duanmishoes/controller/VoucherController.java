@@ -20,7 +20,7 @@ import java.util.UUID;
 public class VoucherController {
     @Autowired
     VoucherService vs;
-    @GetMapping
+    @GetMapping("/hien-thi")
     public ResponseEntity<?> getALL(){
         return ResponseEntity.ok(vs.getAll());
     }
@@ -35,9 +35,10 @@ public class VoucherController {
         v.setNgaySua(new Date(new java.util.Date().getTime()));
         return  ResponseEntity.ok(vs.addVoucher(v));
     }
-    @PostMapping("/detail/{id}")
-    public ResponseEntity<?> add(@PathVariable("id") String id){
-        return  ResponseEntity.ok(vs.detailVoucher(UUID.fromString(id)));
+    @GetMapping("/detail/{idV}")
+    public ResponseEntity<?> detail(@PathVariable("idV") String id){
+        return ResponseEntity.ok(vs.detailVoucher(UUID.fromString(id)));
+
     }
     @GetMapping("/tim-voucher/{key}/{ngayBD}/{ngayKT}")
     public ResponseEntity<?> tim(@PathVariable("key")String key,
