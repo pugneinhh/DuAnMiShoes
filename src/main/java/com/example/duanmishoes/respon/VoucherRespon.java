@@ -1,5 +1,6 @@
 package com.example.duanmishoes.respon;
 
+
 import com.example.duanmishoes.model.Voucher;
 import jakarta.persistence.*;
 import lombok.*;
@@ -16,4 +17,5 @@ import java.util.UUID;
 public interface VoucherRespon extends JpaRepository<Voucher,UUID> {
     @Query(value ="SELECT * from voucher v WHERE v.ma LIKE %:key% or phuong_thuc LIKE :key and ngay_bat_dau between :ngayBD and :ngayKT and ngay_ket_thuc between  :ngayBD and :ngayKT" ,nativeQuery = true)
     List<Voucher> search(@Param("key")String key,@Param("ngayBD")Date ngayBD,@Param("ngayKT")Date ngayKT);
+
 }
