@@ -12,7 +12,10 @@ import java.util.List;
 public class SanPhamService {
     @Autowired
     SanPhamRespon sanPhamRespon;
-    public List<SanPham> getALLSP(){
+    public List<SanPham> getALL(){
         return sanPhamRespon.findAll();
+    }
+    public List<AdminSanPhamRespon> getALLSP(){
+        return sanPhamRespon.getALLSP();
     }
 }
