@@ -14,8 +14,8 @@ import java.util.UUID;
 public class CTSPController {
     @Autowired
     private CTSPService ctspService;
-    @GetMapping("/show-ct/{idSP}")
-    public ResponseEntity<?> getALLCTSP(@PathVariable String id){
+    @GetMapping("/showct/{idSP}")
+    public ResponseEntity<?> getALLCTSP(@PathVariable("idSP") String id){
         return new ResponseEntity<>(ctspService.getALLCTSP(UUID.fromString(id)), HttpStatus.FOUND);
     }
 }
