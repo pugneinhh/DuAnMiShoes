@@ -13,6 +13,7 @@ public class ChatLieuService {
     @Autowired
     ChatLieuRespon chatLieuRespon;
 
+    public List<ChatLieu> getALL(){return chatLieuRespon.findAll();}
     public List<AdminChatLieuRespon> getALLCL(){
         return chatLieuRespon.getALLCL();
     }

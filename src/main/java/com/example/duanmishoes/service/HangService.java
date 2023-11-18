@@ -12,7 +12,9 @@ import java.util.List;
 public class HangService {
     @Autowired
     HangRespon hangRespon;
-
+    public List<Hang> getALL(){
+        return hangRespon.findAll();
+    }
     public List<AdminHangRespon> getALLH(){
         return hangRespon.getALLH();
     }

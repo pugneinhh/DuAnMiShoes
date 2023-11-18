@@ -30,6 +30,8 @@ public class DanhMucController {
     }
     @PostMapping("/add")
     public ResponseEntity<?> add(@RequestBody DanhMuc v){
+        int dmThem = danhMucService.getALL().size();
+        v.setMa("DM" + "-" + (dmThem + 1));
         return  ResponseEntity.ok(danhMucService.addDM(v));
     }
 }

@@ -15,12 +15,16 @@ import org.springframework.web.bind.annotation.*;
 public class KichThuocController {
     @Autowired
     KichThuocService kichThuocService;
+
     @GetMapping
-    public ResponseEntity<?> getALLKT(){
+    public ResponseEntity<?> getALLKT() {
         return new ResponseEntity<>(kichThuocService.getALLKT(), HttpStatus.FOUND);
     }
+
     @PostMapping("/add")
-    public ResponseEntity<?> add(@RequestBody KichThuoc kt){
-        return  ResponseEntity.ok(kichThuocService.addKT(kt));
+    public ResponseEntity<?> add(@RequestBody KichThuoc kt) {
+        int ktThem = kichThuocService.getALL().size();
+        kt.setMa("KT" + "-" + (ktThem + 1));
+        return ResponseEntity.ok(kichThuocService.addKT(kt));
     }
 }
