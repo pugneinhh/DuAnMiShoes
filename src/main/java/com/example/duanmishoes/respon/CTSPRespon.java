@@ -2,7 +2,9 @@ package com.example.duanmishoes.respon;
 
 
 import com.example.duanmishoes.model.AdminCTSPRespon;
+import com.example.duanmishoes.model.AdminSanPhamRespon;
 import com.example.duanmishoes.model.ChiTietSanPham;
+import com.example.duanmishoes.model.SanPham;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -26,4 +28,8 @@ public interface CTSPRespon extends JpaRepository<ChiTietSanPham,UUID> {
             WHERE sp.id=:idSP ORDER BY o.id DESC
                      """, nativeQuery = true)
     List<AdminCTSPRespon> getALLCTSP(@Param("idSP") UUID idSP);
+
+
+
+
 }

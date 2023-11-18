@@ -19,8 +19,18 @@ public class SanPhamController {
     public ResponseEntity<?> getALLSP(){
         return new ResponseEntity<>(sanPhamService.getALLSP(), HttpStatus.FOUND);
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable String id){
+        if (sanPhamService.existByID(id)){
+            sanPhamService.deleteByID(id);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+
     @PostMapping("/add")
     public ResponseEntity<?> add(@RequestBody SanPham v){
         return  ResponseEntity.ok(sanPhamService.addSP(v));
+
     }
 }
