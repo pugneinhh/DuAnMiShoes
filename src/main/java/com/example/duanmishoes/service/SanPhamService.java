@@ -18,4 +18,5 @@ public class SanPhamService {
     public List<AdminSanPhamRespon> getALLSP(){
         return sanPhamRespon.getALLSP();
     }
+    public SanPham addSP(SanPham sp){return sanPhamRespon.save(sp);}
 }
