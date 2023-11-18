@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
@@ -22,6 +23,7 @@ public class VoucherController {
     VoucherService vs;
     @GetMapping("/hien-thi")
     public ResponseEntity<?> getALL(){
+        vs.checkHan();
         return ResponseEntity.ok(vs.getAll());
     }
     @PostMapping("/add")
