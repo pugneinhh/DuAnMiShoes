@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Value;
 import java.math.BigDecimal;
 
 public interface AdminCTSPRespon {
-   @Value("#{target.idCTSP}")
-   String getIdCTSP();
+    @Value("#{target.idCTSP}")
+    String getIdCTSP();
 
     @Value("#{target.tenSP}")
     String getTenSP();
@@ -37,6 +37,9 @@ public interface AdminCTSPRespon {
 
     @Value("#{target.giaBan}")
     BigDecimal getGiaBan();
+
+    @Value("#{target.moTa}")
+    String getMoTa();
 
     @Value("#{target.trangThai}")
     String getTrangThai();

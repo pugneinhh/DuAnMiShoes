@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public interface KichThuocRespon extends JpaRepository<KichThuoc, UUID> {
     @Query(value = """
-    SELECT o.ma as ma ,o.ten as ten, o.trang_thai as trangThai FROM kich_thuoc o
+    SELECT o.id as id,o.ma as ma ,o.ten as ten, o.trang_thai as trangThai FROM kich_thuoc o ORDER BY o.ma ASC
             """, nativeQuery = true)
     List<AdminKichThuocRespon> getALLKT();
 }

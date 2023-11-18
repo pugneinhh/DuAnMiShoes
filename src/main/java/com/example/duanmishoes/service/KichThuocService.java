@@ -1,6 +1,7 @@
 package com.example.duanmishoes.service;
 
 import com.example.duanmishoes.model.AdminKichThuocRespon;
+import com.example.duanmishoes.model.KichThuoc;
 import com.example.duanmishoes.respon.KichThuocRespon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,4 +16,5 @@ public class KichThuocService {
     public List<AdminKichThuocRespon> getALLKT(){
         return kichThuocRespon.getALLKT();
     }
+    public KichThuoc addKT(KichThuoc kt){return kichThuocRespon.save(kt);}
 }

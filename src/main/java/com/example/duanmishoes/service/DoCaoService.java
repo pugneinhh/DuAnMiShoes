@@ -1,6 +1,7 @@
 package com.example.duanmishoes.service;
 
 import com.example.duanmishoes.model.AdminDoCaoRespon;
+import com.example.duanmishoes.model.DoCao;
 import com.example.duanmishoes.respon.DoCaoRespon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,4 +16,5 @@ public class DoCaoService {
     public List<AdminDoCaoRespon> getALLDC(){
         return doCaoRespon.getALLDC();
     }
+    public DoCao addDC(DoCao dc){return doCaoRespon.save(dc);}
 }

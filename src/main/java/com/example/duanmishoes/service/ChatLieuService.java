@@ -1,6 +1,7 @@
 package com.example.duanmishoes.service;
 
 import com.example.duanmishoes.model.AdminChatLieuRespon;
+import com.example.duanmishoes.model.ChatLieu;
 import com.example.duanmishoes.respon.ChatLieuRespon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,4 +16,5 @@ public class ChatLieuService {
     public List<AdminChatLieuRespon> getALLCL(){
         return chatLieuRespon.getALLCL();
     }
+    public ChatLieu addCL(ChatLieu cl){return chatLieuRespon.save(cl);}
 }

@@ -12,7 +12,7 @@ import java.util.UUID;
 
 public interface CTSPRespon extends JpaRepository<ChiTietSanPham,UUID> {
     @Query(value = """
-            SELECT o.id AS idCTSP ,sp.ten AS tenSP ,km.ten AS tenKM,kt.ten AS tenKT,ms.ten AS tenMS,cl.ten AS tenCL,dc.ten AS tenDC,dm.ten AS tenDM
+            SELECT o.id AS idCTSP,o.mo_ta AS moTa ,sp.ten AS tenSP ,km.ten AS tenKM,kt.ten AS tenKT,ms.ten AS tenMS,cl.ten AS tenCL,dc.ten AS tenDC,dm.ten AS tenDM
             ,h.ten AS tenH,o.so_luong AS soLuong,o.gia_ban AS giaBan,o.trang_thai AS trangThai
             FROM chi_tiet_san_pham o
             JOIN san_pham sp  on o.san_pham_id=sp.id
