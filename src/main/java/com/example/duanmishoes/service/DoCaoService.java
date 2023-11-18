@@ -12,7 +12,9 @@ import java.util.List;
 public class DoCaoService {
     @Autowired
     private DoCaoRespon doCaoRespon;
-
+    public List<DoCao> getALL(){
+        return doCaoRespon.findAll();
+    }
     public List<AdminDoCaoRespon> getALLDC(){
         return doCaoRespon.getALLDC();
     }

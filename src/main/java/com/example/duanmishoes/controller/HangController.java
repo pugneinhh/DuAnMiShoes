@@ -15,12 +15,16 @@ import org.springframework.web.bind.annotation.*;
 public class HangController {
     @Autowired
     HangService hangService;
+
     @GetMapping
-    public ResponseEntity<?> getALLH(){
+    public ResponseEntity<?> getALLH() {
         return new ResponseEntity<>(hangService.getALLH(), HttpStatus.FOUND);
     }
+
     @PostMapping("/add")
-    public ResponseEntity<?> add(@RequestBody Hang h){
-        return  ResponseEntity.ok(hangService.addH(h));
+    public ResponseEntity<?> add(@RequestBody Hang h) {
+        int hThem = hangService.getALL().size();
+        h.setMa("H" + "-" + (hThem + 1));
+        return ResponseEntity.ok(hangService.addH(h));
     }
 }

@@ -15,12 +15,16 @@ import org.springframework.web.bind.annotation.*;
 public class MauSacController {
     @Autowired
     MauSacService mauSacService;
+
     @GetMapping
-    public ResponseEntity<?> getALLMS(){
+    public ResponseEntity<?> getALLMS() {
         return new ResponseEntity<>(mauSacService.getALLMS(), HttpStatus.FOUND);
     }
+
     @PostMapping("/add")
-    public ResponseEntity<?> add(@RequestBody MauSac v){
-        return  ResponseEntity.ok(mauSacService.addMS(v));
+    public ResponseEntity<?> add(@RequestBody MauSac v) {
+        int msThem = mauSacService.getALL().size();
+        v.setMa("MS" + "-" + (msThem + 1));
+        return ResponseEntity.ok(mauSacService.addMS(v));
     }
 }

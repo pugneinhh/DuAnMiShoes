@@ -12,6 +12,9 @@ import java.util.List;
 public class MauSacService {
     @Autowired
     MauSacRespon mauSacRespon;
+    public List<MauSac> getALL(){
+        return mauSacRespon.findAll();
+    }
     public List<AdminMauSacRespon> getALLMS(){
         return mauSacRespon.getALLMS();
     }
