@@ -34,7 +34,7 @@ public class KhachHang {
 
 
 
-    private String sdt;
+    private String soDienThoai;
 
     @ManyToOne
     @JoinColumn(name = "dia_chi_id", referencedColumnName = "id")
