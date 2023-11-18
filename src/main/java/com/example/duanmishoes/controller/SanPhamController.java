@@ -1,5 +1,6 @@
 package com.example.duanmishoes.controller;
 
+import com.example.duanmishoes.model.SanPham;
 import com.example.duanmishoes.service.SanPhamService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,6 @@ public class SanPhamController {
     public ResponseEntity<?> getALLSP(){
         return new ResponseEntity<>(sanPhamService.getALLSP(), HttpStatus.FOUND);
     }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable String id){
         if (sanPhamService.existByID(id)){
@@ -27,5 +27,10 @@ public class SanPhamController {
         } else {
             return ResponseEntity.notFound().build();
         }
+
+    @PostMapping("/add")
+    public ResponseEntity<?> add(@RequestBody SanPham v){
+        return  ResponseEntity.ok(sanPhamService.addSP(v));
+
     }
 }

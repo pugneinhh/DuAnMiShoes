@@ -1,6 +1,8 @@
 package com.example.duanmishoes.service;
 
 import com.example.duanmishoes.model.AdminDanhMucRespon;
+import com.example.duanmishoes.model.ChatLieu;
+import com.example.duanmishoes.model.DanhMuc;
 import com.example.duanmishoes.respon.DanhMucRespon;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,4 +19,6 @@ public class DanhMucService {
     public List<AdminDanhMucRespon> getALLDM(){
         return danhMucRespon.getALLDM();
     }
+    public List<AdminDanhMucRespon> getTim(String key,int tt){return  danhMucRespon.timDM(key,tt);}
+    public DanhMuc addDM(DanhMuc dm){return danhMucRespon.save(dm);}
 }

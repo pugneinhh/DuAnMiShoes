@@ -21,6 +21,7 @@ public class SanPhamService {
         return sanPhamRespon.getALLSP();
     }
 
+
     public boolean existByID(String id){
         return sanPhamRespon.existsById(UUID.fromString(id));
     }
@@ -28,4 +29,7 @@ public class SanPhamService {
     public void deleteByID(String id){
          sanPhamRespon.deleteById(UUID.fromString(id));
     }
+
+    public SanPham addSP(SanPham sp){return sanPhamRespon.save(sp);}
+
 }

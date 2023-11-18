@@ -27,7 +27,7 @@ public class NhanVien {
     private String anh;
     private String gioiTinh;
     private Date ngaySinh;
-    private String sdt;
+    private String soDienThoai;
     private String diaChi;
     private String matKhau;
     private String nguoiTao;
