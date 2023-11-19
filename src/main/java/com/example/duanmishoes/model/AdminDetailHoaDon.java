@@ -28,7 +28,8 @@ public interface AdminDetailHoaDon {
     String getTrangThai();
     @Value("#{target.loaiHD}")
     String getLoaiHD();
-
+    @Value("#{target.ghiChuHD}")
+    String getGhiChuHD();
 
 
 

@@ -1,5 +1,6 @@
 package com.example.duanmishoes.service;
 
+import com.example.duanmishoes.model.AdminBanHangHDRespon;
 import com.example.duanmishoes.model.AdminDetailHoaDon;
 import com.example.duanmishoes.model.AdminHoaDonResponn;
 import com.example.duanmishoes.model.HoaDon;
@@ -29,7 +30,7 @@ public class HoaDonServicee {
     public List<AdminHoaDonResponn> timHoaDon(String tim, int loai, java.sql.Date bd, Date kt){
         return hoaDonResponn.search(tim,loai,bd,kt);
     }
-     public AdminDetailHoaDon getByID(UUID id){
+     public AdminBanHangHDRespon getByID(UUID id){
         return hoaDonResponn.detailHD(id);
     }
      public HoaDon updateHD(HoaDon hoaDon,String id){
