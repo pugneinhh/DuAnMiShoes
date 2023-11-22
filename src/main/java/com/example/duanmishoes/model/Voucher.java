@@ -20,6 +20,7 @@ public class Voucher {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     private String ma;
+    private String ten;
     private String phuongThuc;
     private Timestamp ngayBatDau;
     private Timestamp ngayKetThuc;

@@ -1,6 +1,8 @@
 package com.example.duanmishoes.service;
 
+import com.example.duanmishoes.model.AdminVoucher;
 import com.example.duanmishoes.model.Voucher;
+import com.example.duanmishoes.model.VoucherSearch;
 import com.example.duanmishoes.respon.VoucherRespon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -26,23 +28,28 @@ public class VoucherService {
         return vr.save(v);
     }
     public Voucher detailVoucher(UUID id){return vr.getById(id);}
-    @Scheduled(cron = "0 * * * * *",zone = "Asia/Saigon")
-    public void checkHan(){
-        Timestamp now = new Timestamp(System.currentTimeMillis());
-        for (Voucher x : vr.findAll()){
-            if (x.getNgayKetThuc().compareTo(now)<=0) {
-                x.setTrangThai(1);
-                vr.save(x);
-            }
-            if(x.getNgayKetThuc().compareTo(now)>0){
-                x.setTrangThai(0);
-                vr.save(x);
-            }
-            if(x.getLoaiVoucher()==null||x.getLoaiVoucher().equalsIgnoreCase("false")){
-                x.setSoLuong(0);
-                vr.save(x);
-            }
-        }
+
+    public List<AdminVoucher> getSearch(VoucherSearch voucherSearch) {
+        return vr.searchVoucher(voucherSearch);
     }
+
+//    @Scheduled(cron = "0 * * * * *",zone = "Asia/Saigon")
+//    public void checkHan(){
+//        Timestamp now = new Timestamp(System.currentTimeMillis());
+//        for (Voucher x : vr.findAll()){
+//            if (x.getNgayKetThuc().compareTo(now)<=0) {
+//                x.setTrangThai(1);
+//                vr.save(x);
+//            }
+//            if(x.getNgayKetThuc().compareTo(now)>0){
+//                x.setTrangThai(0);
+//                vr.save(x);
+//            }
+//            if(x.getLoaiVoucher()==null||x.getLoaiVoucher().equalsIgnoreCase("false")){
+//                x.setSoLuong(0);
+//                vr.save(x);
+//            }
+//        }
+//    }
 
 }
