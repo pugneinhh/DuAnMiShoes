@@ -8,8 +8,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,10 +32,10 @@ public class NhanVien {
     @JoinColumn(name = "chuc_vu_id", referencedColumnName = "id")
     private ChucVu chucVu;
 
-    @NotEmpty(message = "Mã không được để trống")
+
     private String ma;
 
-    @NotEmpty(message = "Họ và tên không được để trống")
+
     private String ten;
 
 
