@@ -2,8 +2,7 @@
 package com.example.duanmishoes.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
+
 import lombok.*;
 
 import java.sql.Date;
@@ -22,11 +21,11 @@ public class ChucVu {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @NotBlank(message = "Không được để trống mã !")
+
     @Column(name = "ma")
     private String ma;
 
-    @NotEmpty(message = "Tên không được để trống")
+
     @Column(name = "ten")
     private String ten;
 
