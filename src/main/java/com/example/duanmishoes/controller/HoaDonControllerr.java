@@ -1,6 +1,10 @@
 package com.example.duanmishoes.controller;
 
+import com.example.duanmishoes.model.HoaDon;
+import com.example.duanmishoes.model.KhachHang;
+import com.example.duanmishoes.model.LichSuHoaDon;
 import com.example.duanmishoes.service.HoaDonServicee;
+import com.example.duanmishoes.service.LichSuHoaDonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,34 +14,35 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 
 
 @CrossOrigin("http://localhost:3000/")
 @RestController
-@RequestMapping("/hoa-don")
+
 @RequiredArgsConstructor
 public class HoaDonControllerr {
     @Autowired
     private HoaDonServicee hoaDonService;
+    @Autowired
+    private LichSuHoaDonService lichSuHoaDonService;
 
-    @GetMapping
+
+    @GetMapping("/hoa-don")
     public ResponseEntity<?> getALL(){
         return new ResponseEntity<>(hoaDonService.getALL(), HttpStatus.FOUND);
     }
-    @GetMapping("{tt}")
+    @GetMapping("/hoa-don/{tt}")
     public ResponseEntity<?> getALLTT(@PathVariable("tt") int tt){
-
-    
-
-        return  ResponseEntity.ok(hoaDonService.getALLTT(tt));
+        return new ResponseEntity<>(hoaDonService.getALLTT(tt),HttpStatus.FOUND);
     }
     @GetMapping("/detail-hoa-don/{idHD}")
-    public ResponseEntity<?> detailHD(@PathVariable String id){
+    public ResponseEntity<?> detailHD(@PathVariable("idHD") String id){
         return  ResponseEntity.ok(hoaDonService.getByID(UUID.fromString(id)));
     }
-    @GetMapping("/tim-kiem/{hehe}/{loaiHD}/{BD}/{KT}")
+    @GetMapping("/hoa-don/tim-kiem/{hehe}/{loaiHD}/{BD}/{KT}")
     public ResponseEntity<?> timHoaDon(@PathVariable("hehe") String tim,
                                        @PathVariable("loaiHD")int loai,
                                        @PathVariable("BD") String bd,
@@ -48,11 +53,30 @@ public class HoaDonControllerr {
         java.sql.Date BD= new java.sql.Date(d1.getTime());
         java.sql.Date KT= new java.sql.Date(d2.getTime());
         return  ResponseEntity.ok(hoaDonService.timHoaDon(tim,loai,BD,KT));
-
     }
-//    @PostMapping("/add")
+    @PutMapping("/update-hoa-don/{idHD}")
+    public ResponseEntity<?> updateTTHDvaADDLSHD(@RequestBody LichSuHoaDon ls,@PathVariable("idHD") String id, HoaDon hd){
+        HoaDon hoaDon=hoaDonService.findHoaDonbyID(UUID.fromString(id));
+        ls.setTrangThai(hoaDon.getTrangThai()+1);
+        ls.setNgayTao(new Date());
+        ls.setHoaDon(hoaDon);
+        ls.setMoTaHoatDong(ls.getMoTaHoatDong());
+        lichSuHoaDonService.addLichSuHoaDon(ls);
+        return ResponseEntity.ok(
+                hoaDonService.updateHD(hd,id)
+        );
+    }
+    @GetMapping("/detail-lich-su-hoa-don/{idHD}")
+    public ResponseEntity<?> detailLSHD(@PathVariable("idHD") String id){
+        return  ResponseEntity.ok(lichSuHoaDonService.getLichHoaDon(UUID.fromString(id)));
+    }
+    @GetMapping("/ngay-hoa-don-time-line/{idHD}")
+    public ResponseEntity<?> ngayTimeLine(@PathVariable("idHD") String id){
+        return  ResponseEntity.ok(lichSuHoaDonService.HoaDonTimeLine(UUID.fromString(id)));
+    }
+
 //    public ResponseEntity<?> add(@RequestBody LichSuHoaDon khachHang){
-//        return  ResponseEntity.ok(khachHangService.add(khachHang));
+//        return  ResponseEntity.ok(hoaDonService.addLichSuHoaDon(khachHang));
 //    }
 //    @PutMapping("/update/{ma}")
 //    public ResponseEntity<?> update(@PathVariable String ma,@RequestBody LichSuHoaDon khachHang){

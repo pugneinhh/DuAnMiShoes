@@ -15,6 +15,6 @@ public interface AdminSanPhamRespon {
     @Value("#{target.soLuong}")
     int getSoLuong();
 
-    @Value("#{target.ma}")
+    @Value("#{target.trangThai}")
     String getTrangThai();
 }

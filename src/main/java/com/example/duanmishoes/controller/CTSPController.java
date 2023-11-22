@@ -1,6 +1,7 @@
 package com.example.duanmishoes.controller;
 
 import com.example.duanmishoes.service.CTSPService;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,8 +15,14 @@ import java.util.UUID;
 public class CTSPController {
     @Autowired
     private CTSPService ctspService;
-    @GetMapping("/show-ct/{idSP}")
-    public ResponseEntity<?> getALLCTSP(@PathVariable String id){
-        return new ResponseEntity<>(ctspService.getALLCTSP(UUID.fromString(id)), HttpStatus.FOUND);
+    @GetMapping("/showct/{idSP}")
+    public ResponseEntity<?> getALLCTSP(@PathVariable("idSP") String id){
+        return new ResponseEntity<>(ctspService.getALLCTSP(UUID.fromString(id)), HttpStatus.OK);
+    }
+
+    @GetMapping("/showct")
+    public ResponseEntity<?> getALLCTSP_1(@RequestParam String id){
+        return new ResponseEntity<>(ctspService.getALLCTSP(UUID.fromString(id)), HttpStatus.OK);
     }
 }
+

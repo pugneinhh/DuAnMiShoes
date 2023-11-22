@@ -1,6 +1,9 @@
 package com.example.duanmishoes.service;
 
+import com.example.duanmishoes.model.AdminBanHangHDRespon;
+import com.example.duanmishoes.model.AdminDetailHoaDon;
 import com.example.duanmishoes.model.AdminHoaDonResponn;
+import com.example.duanmishoes.model.HoaDon;
 import com.example.duanmishoes.respon.HoaDonResponn;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +11,14 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 public class HoaDonServicee {
     @Autowired
     HoaDonResponn hoaDonResponn;
+
 
     public List<AdminHoaDonResponn> getALL() {
         return hoaDonResponn.getALLHD();
@@ -25,9 +30,23 @@ public class HoaDonServicee {
     public List<AdminHoaDonResponn> timHoaDon(String tim, int loai, java.sql.Date bd, Date kt){
         return hoaDonResponn.search(tim,loai,bd,kt);
     }
-     public AdminHoaDonResponn getByID(UUID id){
+     public AdminBanHangHDRespon getByID(UUID id){
         return hoaDonResponn.detailHD(id);
     }
+     public HoaDon updateHD(HoaDon hoaDon,String id){
+        HoaDon hoaDon1= findHoaDonbyID(UUID.fromString(id));
+         Optional<HoaDon> optional =hoaDonResponn.findById(UUID.fromString(id));
+        return optional.map(o->{
+            o.setTrangThai((hoaDon1.getTrangThai())+1);
+            return hoaDonResponn.save(o);
+        }).orElse(null);
+//         return hoaDonResponn.save(hoaDon);
+
+     }
+     public HoaDon findHoaDonbyID(UUID id){
+        return  hoaDonResponn.getById(id);
+     }
+
 
 //    public LichSuHoaDon add(LichSuHoaDon kh){
 //        return khachHangRespon.save(kh);

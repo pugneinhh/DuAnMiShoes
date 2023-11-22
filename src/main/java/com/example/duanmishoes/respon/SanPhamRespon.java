@@ -15,4 +15,6 @@ public interface SanPhamRespon extends JpaRepository<SanPham, UUID> {
     FROM san_pham a JOIN chi_tiet_san_pham o  on o.san_pham_id= a.id GROUP BY ma,ten,a.trang_thai,a.id
             """, nativeQuery = true)
     List<AdminSanPhamRespon> getALLSP();
+
+
 }

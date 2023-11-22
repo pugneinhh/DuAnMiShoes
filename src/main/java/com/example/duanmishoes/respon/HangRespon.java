@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public interface HangRespon extends JpaRepository<Hang, UUID> {
     @Query(value = """
-    SELECT o.ma as ma ,o.ten as ten, o.trang_thai as trangThai FROM hang o
+    SELECT o.ma as ma ,o.ten as ten, o.trang_thai as trangThai FROM hang o ORDER BY o.ma ASC
             """, nativeQuery = true)
     List<AdminHangRespon> getALLH();
 }

@@ -6,11 +6,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.UUID;
 
 @CrossOrigin("http://localhost:3000/")
 @RestController
@@ -19,14 +21,26 @@ import java.text.SimpleDateFormat;
 public class VoucherController {
     @Autowired
     VoucherService vs;
-    @GetMapping
+    @GetMapping("/hien-thi")
     public ResponseEntity<?> getALL(){
+        vs.checkHan();
         return ResponseEntity.ok(vs.getAll());
     }
     @PostMapping("/add")
     public ResponseEntity<?> add(@RequestBody Voucher v){
-        v.setNgayBatDau(new Date(new java.util.Date().getTime()));
+        v.setNgayTao(new Date(new java.util.Date().getTime()));
         return  ResponseEntity.ok(vs.addVoucher(v));
+    }
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> update(@PathVariable("id") String id,@RequestBody Voucher v){
+        v.setId(UUID.fromString(id));
+        v.setNgaySua(new Date(new java.util.Date().getTime()));
+        return  ResponseEntity.ok(vs.addVoucher(v));
+    }
+    @GetMapping("/detail/{idV}")
+    public ResponseEntity<?> detail(@PathVariable("idV") String id){
+        return ResponseEntity.ok(vs.detailVoucher(UUID.fromString(id)));
+
     }
     @GetMapping("/tim-voucher/{key}/{ngayBD}/{ngayKT}")
     public ResponseEntity<?> tim(@PathVariable("key")String key,

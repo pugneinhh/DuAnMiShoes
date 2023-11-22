@@ -43,23 +43,18 @@ public class NhanVien {
 
     private String anh;
 
-    @Column(name = "gioi_tinh")
+   
     private String gioiTinh;
 
     private Date ngaySinh;
 
-    @NotEmpty(message = "SĐT không được để trống")
-    @Pattern(regexp = "^[0-9]{10,11}$", message = "Số điện thoại phải có từ 10 đến 11 chữ số")
     private String sdt;
-
-    @NotEmpty(message = "Email không được để trống")
-    @Pattern(regexp = "^[A-Za-z0-9._%+-]+@fpt\\.edu\\.vn$", message = "Email phải có đuôi @fpt.edu.vn")
+  
     private String email;
 
     private String cccd;
 
     private String thanhPho;
-
 
     private String huyen;
 
@@ -68,21 +63,21 @@ public class NhanVien {
 
     private String diaChiCuThe;
 
-    @Column(name = "mat_khau")
+    private String soDienThoai;
+    private String diaChi;
+
     private String matKhau;
 
-    @Column(name = "nguoi_tao")
+  
     private String nguoiTao;
 
-    @Column(name = "nguoi_sua")
-    private String nguoiSua;
 
-    @Column(name = "ngay_tao")
+    private String nguoiSua;
     private Date ngayTao;
 
-    @Column(name = "ngay_sua")
+ 
     private Date ngaySua;
 
-    @Column(name = "trang_thai")
+ 
     private Integer trangThai;
 }
