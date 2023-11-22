@@ -5,12 +5,14 @@ import com.example.duanmishoes.model.Voucher;
 import com.example.duanmishoes.model.VoucherSearch;
 import com.example.duanmishoes.respon.VoucherRespon;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,7 +21,9 @@ public class VoucherService {
     @Autowired
     VoucherRespon vr;
     public List<Voucher> getAll(){
-        return vr.findAll();
+        Sort sort=Sort.by(Sort.Order.desc("ngayTao"));
+//        return vr.findAll(sort);
+        return vr.findAllByOrderByNgayTaoDesc();
     }
     public List<Voucher> getTim(String key, Date ngayBD,Date ngayKT){
         return vr.search(key,ngayBD,ngayKT);

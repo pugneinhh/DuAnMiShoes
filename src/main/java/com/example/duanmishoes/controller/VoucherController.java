@@ -11,6 +11,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.UUID;
@@ -31,6 +32,11 @@ public class VoucherController {
     public ResponseEntity<?> add(@RequestBody Voucher v){
         if(v.getLoaiVoucher()==null){
             v.setLoaiVoucher("false");
+        }
+        if(v.getNgayBatDau().compareTo(new Timestamp(System.currentTimeMillis()))>0){
+            v.setTrangThai(0);
+        }else{
+            v.setTrangThai(1);
         }
         v.setNgayTao(new Date(new java.util.Date().getTime()));
         return  ResponseEntity.ok(vs.addVoucher(v));
