@@ -4,9 +4,12 @@ import com.example.duanmishoes.model.SanPham;
 import com.example.duanmishoes.service.SanPhamService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @CrossOrigin("http://localhost:3000/")
 @RestController
@@ -32,5 +35,10 @@ public class SanPhamController {
     public ResponseEntity<?> add(@RequestBody SanPham v){
         return  ResponseEntity.ok(sanPhamService.addSP(v));
 
+    }
+
+    @GetMapping("/showSP/{idCTSP}")
+    public ResponseEntity<?> getSPByCTSP(@PathVariable("idCTSP") String id){
+        return ResponseEntity.ok(sanPhamService.getSPByCTSP(UUID.fromString(id)));
     }
 }
