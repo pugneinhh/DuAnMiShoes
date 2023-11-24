@@ -16,5 +16,6 @@ public interface SanPhamRespon extends JpaRepository<SanPham, UUID> {
             """, nativeQuery = true)
     List<AdminSanPhamRespon> getALLSP();
 
-
+    @Query(value = "select san_pham.id from san_pham join chi_tiet_san_pham on san_pham.id = chi_tiet_san_pham.san_pham_id where chi_tiet_san_pham.id = ?1",nativeQuery = true)
+    UUID getIDSPbyCTSP(UUID id);
 }

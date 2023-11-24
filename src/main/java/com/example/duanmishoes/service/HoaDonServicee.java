@@ -1,7 +1,8 @@
 package com.example.duanmishoes.service;
 
-import com.example.duanmishoes.model.AdminDetailHoaDon;
+import com.example.duanmishoes.model.AdminHoaDonDetail;
 import com.example.duanmishoes.model.AdminHoaDonResponn;
+import com.example.duanmishoes.model.AdminHoaDonSanPham;
 import com.example.duanmishoes.model.HoaDon;
 import com.example.duanmishoes.respon.HoaDonResponn;
 import lombok.RequiredArgsConstructor;
@@ -29,24 +30,26 @@ public class HoaDonServicee {
     public List<AdminHoaDonResponn> timHoaDon(String tim, int loai, java.sql.Date bd, Date kt){
         return hoaDonResponn.search(tim,loai,bd,kt);
     }
-     public AdminDetailHoaDon getByID(UUID id){
+    public AdminHoaDonDetail getByID(UUID id){
         return hoaDonResponn.detailHD(id);
     }
-     public HoaDon updateHD(HoaDon hoaDon,String id){
+    public HoaDon updateHD(HoaDon hoaDon,String id){
         HoaDon hoaDon1= findHoaDonbyID(UUID.fromString(id));
-         Optional<HoaDon> optional =hoaDonResponn.findById(UUID.fromString(id));
+        Optional<HoaDon> optional =hoaDonResponn.findById(UUID.fromString(id));
         return optional.map(o->{
             o.setTrangThai((hoaDon1.getTrangThai())+1);
             return hoaDonResponn.save(o);
         }).orElse(null);
 //         return hoaDonResponn.save(hoaDon);
 
-     }
-     public HoaDon findHoaDonbyID(UUID id){
+    }
+    public HoaDon findHoaDonbyID(UUID id){
         return  hoaDonResponn.getById(id);
-     }
+    }
 
-
+    public List<AdminHoaDonSanPham> detailHDSanPham(UUID key){
+        return  hoaDonResponn.detailHDSanPham(key);
+    }
 //    public LichSuHoaDon add(LichSuHoaDon kh){
 //        return khachHangRespon.save(kh);
 //    }

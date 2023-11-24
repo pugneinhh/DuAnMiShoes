@@ -1,6 +1,11 @@
 package com.example.duanmishoes.controller;
 
+
 import com.example.duanmishoes.model.AdminCTSPRespon;
+
+import com.example.duanmishoes.model.KhuyenMai;
+import com.example.duanmishoes.model.Voucher;
+
 import com.example.duanmishoes.service.CTSPService;
 import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +13,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
+
+import java.sql.Date;
 import java.util.UUID;
 
 @CrossOrigin("http://localhost:3000/")
@@ -25,6 +33,17 @@ public class CTSPController {
     @GetMapping("/showct")
     public ResponseEntity<?> getALLCTSP_1(@RequestParam String id){
         return new ResponseEntity<>(ctspService.getALLCTSP(UUID.fromString(id)), HttpStatus.OK);
+    }
+
+    @PutMapping("/updateKM/{idCTSP}")
+    public ResponseEntity<?> update(@PathVariable("idCTSP") String idCTSP,@RequestBody KhuyenMai khuyenMai){
+        System.out.println("Vào update");
+        return  ResponseEntity.ok(ctspService.updateKM(UUID.fromString(idCTSP),khuyenMai));
+    }
+
+    @GetMapping("/showKM/{idKM}")
+    public ResponseEntity<?> getALLCTSPByKM(@PathVariable("idKM") String id){
+        return new ResponseEntity<>(ctspService.getALLCTSPByKM(UUID.fromString(id)), HttpStatus.OK);
     }
 }
 

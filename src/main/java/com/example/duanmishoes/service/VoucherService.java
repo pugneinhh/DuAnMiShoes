@@ -1,13 +1,18 @@
 package com.example.duanmishoes.service;
 
+import com.example.duanmishoes.model.AdminVoucher;
 import com.example.duanmishoes.model.Voucher;
+import com.example.duanmishoes.model.VoucherSearch;
 import com.example.duanmishoes.respon.VoucherRespon;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
@@ -16,7 +21,9 @@ public class VoucherService {
     @Autowired
     VoucherRespon vr;
     public List<Voucher> getAll(){
-        return vr.findAll();
+        Sort sort=Sort.by(Sort.Order.desc("ngayTao"));
+//        return vr.findAll(sort);
+        return vr.findAllByOrderByNgayTaoDesc();
     }
     public List<Voucher> getTim(String key, Date ngayBD,Date ngayKT){
         return vr.search(key,ngayBD,ngayKT);
@@ -25,15 +32,28 @@ public class VoucherService {
         return vr.save(v);
     }
     public Voucher detailVoucher(UUID id){return vr.getById(id);}
-    @Scheduled(cron = "0 * * * * *",zone = "Asia/Saigon")
-    public void checkHan(){
-        Date now = new Date(new java.util.Date().getTime());
-        for (Voucher x : vr.findAll()){
-            if (x.getNgayKetThuc().before(now)) {
-                x.setTrangThai(1);
-                vr.save(x);
-            }
-        }
+
+    public List<AdminVoucher> getSearch(VoucherSearch voucherSearch) {
+        return vr.searchVoucher(voucherSearch);
     }
+
+//    @Scheduled(cron = "0 * * * * *",zone = "Asia/Saigon")
+//    public void checkHan(){
+//        Timestamp now = new Timestamp(System.currentTimeMillis());
+//        for (Voucher x : vr.findAll()){
+//            if (x.getNgayKetThuc().compareTo(now)<=0) {
+//                x.setTrangThai(1);
+//                vr.save(x);
+//            }
+//            if(x.getNgayKetThuc().compareTo(now)>0){
+//                x.setTrangThai(0);
+//                vr.save(x);
+//            }
+//            if(x.getLoaiVoucher()==null||x.getLoaiVoucher().equalsIgnoreCase("false")){
+//                x.setSoLuong(0);
+//                vr.save(x);
+//            }
+//        }
+//    }
 
 }
