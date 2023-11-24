@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public interface ChatLieuRespon extends JpaRepository<ChatLieu, UUID> {
     @Query(value = """
-    SELECT o.ma as ma ,o.ten as ten, o.trang_thai as trangThai FROM chat_lieu o ORDER BY o.ma ASC 
+    SELECT o.id as id,o.ma as ma ,o.ten as ten, o.trang_thai as trangThai FROM chat_lieu o ORDER BY o.ma DESC
             """, nativeQuery = true)
     List<AdminChatLieuRespon> getALLCL();
 }

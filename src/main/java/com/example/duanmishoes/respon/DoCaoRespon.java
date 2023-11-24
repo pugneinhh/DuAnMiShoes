@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public interface DoCaoRespon extends JpaRepository<DoCao, UUID> {
     @Query(value = """
-    SELECT o.ma as ma ,o.ten as ten, o.trang_thai as trangThai FROM do_cao o ORDER BY o.ma ASC
+    SELECT o.id as id,o.ma as ma ,o.ten as ten, o.trang_thai as trangThai FROM do_cao o ORDER BY o.ma DESC
             """, nativeQuery = true)
     List<AdminDoCaoRespon> getALLDC();
 }

@@ -25,6 +25,7 @@ public class ChatLieuController {
     public ResponseEntity<?> add(@RequestBody ChatLieu v){
         int clThem = chatLieuService.getALL().size();
         v.setMa("CL" + "-" + (clThem + 1));
+        v.setTrangThai(1);
         return  ResponseEntity.ok(chatLieuService.addCL(v));
     }
 }

@@ -32,6 +32,7 @@ public class DanhMucController {
     public ResponseEntity<?> add(@RequestBody DanhMuc v){
         int dmThem = danhMucService.getALL().size();
         v.setMa("DM" + "-" + (dmThem + 1));
+        v.setTrangThai(1);
         return  ResponseEntity.ok(danhMucService.addDM(v));
     }
 }

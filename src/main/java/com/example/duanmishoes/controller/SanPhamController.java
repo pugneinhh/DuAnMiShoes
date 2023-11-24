@@ -31,6 +31,7 @@ public class SanPhamController {
             return ResponseEntity.notFound().build();
         }
     }
+
     @PostMapping("/add")
     public ResponseEntity<?> add(@RequestBody SanPham v){
         return  ResponseEntity.ok(sanPhamService.addSP(v));
