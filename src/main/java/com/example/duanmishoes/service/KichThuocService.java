@@ -12,7 +12,9 @@ import java.util.List;
 public class KichThuocService {
     @Autowired
     KichThuocRespon kichThuocRespon;
-
+    public List<KichThuoc> getALL(){
+        return kichThuocRespon.findAll();
+    }
     public List<AdminKichThuocRespon> getALLKT(){
         return kichThuocRespon.getALLKT();
     }

@@ -15,12 +15,16 @@ import org.springframework.web.bind.annotation.*;
 public class DoCaoController {
     @Autowired
     private DoCaoService doCaoService;
+
     @GetMapping
-    public ResponseEntity<?> getALLDC(){
+    public ResponseEntity<?> getALLDC() {
         return new ResponseEntity<>(doCaoService.getALLDC(), HttpStatus.FOUND);
     }
+
     @PostMapping("/add")
-    public ResponseEntity<?> add(@RequestBody DoCao dc){
-        return  ResponseEntity.ok(doCaoService.addDC(dc));
+    public ResponseEntity<?> add(@RequestBody DoCao dc) {
+        int dcThem = doCaoService.getALL().size();
+        dc.setMa("DC" + "-" + (dcThem + 1));
+        return ResponseEntity.ok(doCaoService.addDC(dc));
     }
 }

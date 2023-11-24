@@ -4,6 +4,7 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.UUID;
 @Entity
 @Table(name = "voucher")
@@ -19,12 +20,15 @@ public class Voucher {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     private String ma;
+    private String ten;
     private String phuongThuc;
-    private Date ngayBatDau;
-    private Date ngayKetThuc;
+    private Timestamp ngayBatDau;
+    private Timestamp ngayKetThuc;
     private int mucDo;
     private BigDecimal giamToiDa;
     private BigDecimal dieuKien;
+    private int soLuong;
+    private String loaiVoucher;
     private String nguoiTao;
     private String nguoiSua;
     private Date ngayTao;
