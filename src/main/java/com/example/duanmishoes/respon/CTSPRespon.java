@@ -25,11 +25,7 @@ public interface CTSPRespon extends JpaRepository<ChiTietSanPham,UUID> {
             JOIN do_cao dc  on o.do_cao_id=dc.id
             JOIN danh_muc dm  on o.danh_muc_id=dm.id
             JOIN hang h  on o.hang_id=h.id
-            WHERE sp.id=:idSP ORDER BY o.id DESC
+            WHERE sp.id=:idSP
                      """, nativeQuery = true)
     List<AdminCTSPRespon> getALLCTSP(@Param("idSP") UUID idSP);
-
-
-
-
 }

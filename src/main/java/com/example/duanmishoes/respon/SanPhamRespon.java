@@ -12,7 +12,7 @@ import java.util.UUID;
 public interface SanPhamRespon extends JpaRepository<SanPham, UUID> {
     @Query(value = """
     SELECT  a.id AS idSP,a.ma AS ma ,a.ten AS ten,SUM(o.so_luong) AS soLuong, a.trang_thai AS trangThai
-    FROM san_pham a JOIN chi_tiet_san_pham o  on o.san_pham_id= a.id GROUP BY ma,ten,a.trang_thai,a.id
+    FROM san_pham a JOIN chi_tiet_san_pham o  on o.san_pham_id= a.id GROUP BY ma,ten,a.trang_thai,a.id ORDER BY a.ma DESC
             """, nativeQuery = true)
     List<AdminSanPhamRespon> getALLSP();
 
