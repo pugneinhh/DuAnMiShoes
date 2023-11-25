@@ -2,6 +2,7 @@ package com.example.duanmishoes.service;
 
 import com.example.duanmishoes.model.AdminChucVuRespon;
 import com.example.duanmishoes.model.ChucVu;
+import com.example.duanmishoes.model.NhanVien;
 import com.example.duanmishoes.respon.ChucVuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,10 @@ public class ChucVuService {
 
     public List<AdminChucVuRespon> getAllCV() {
         return chucVuRepository.getALLCV();
+    }
+
+    public ChucVu add(ChucVu chucVu) {
+        return chucVuRepository.save(chucVu);
     }
 
 
