@@ -12,7 +12,7 @@ import java.util.UUID;
 @Repository
 public interface ChucVuRepository extends JpaRepository<ChucVu, UUID> {
     @Query(value = """
-    SELECT o.ma as ma ,o.ten as ten, o.trang_thai as trangThai FROM chuc_vu o
+    SELECT o.id as idCV, o.ma as ma ,o.ten as ten FROM chuc_vu o
             """, nativeQuery = true)
     List<AdminChucVuRespon> getALLCV();
 }
