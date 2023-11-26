@@ -2,7 +2,7 @@ package com.example.duanmishoes.model;
 
 import org.springframework.beans.factory.annotation.Value;
 
-public interface AdminDetailHoaDon {
+public interface AdminHoaDonDetail {
     @Value("#{target.idHD}")
     String getIdHD();
 
@@ -15,23 +15,21 @@ public interface AdminDetailHoaDon {
     @Value("#{target.tenKH}")
     String getTenKH();
 
+    @Value("#{target.loaiHD}")
+    String getLoaiHD();
+
     @Value("#{target.sdt}")
     String getSDT();
-    @Value("#{target. diaChiKH}")
-    String  getDiaChiKH();
     @Value("#{target.ngayMua}")
     String getNgayMua();
 
     @Value("#{target.thanhTien}")
     String getThanhTien();
+
     @Value("#{target.trangThai}")
     String getTrangThai();
-    @Value("#{target.loaiHD}")
-    String getLoaiHD();
+    @Value("#{target.diaChiKH}")
+    String getDiaChiKH();
     @Value("#{target.ghiChuHD}")
     String getGhiChuHD();
-
-
-
-
 }

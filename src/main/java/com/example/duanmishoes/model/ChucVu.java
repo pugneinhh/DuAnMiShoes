@@ -1,6 +1,7 @@
 
 package com.example.duanmishoes.model;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,6 +15,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
+import jakarta.persistence.*;
+
+import lombok.*;
+
 
 import java.sql.Date;
 import java.util.UUID;
@@ -32,6 +38,7 @@ public class ChucVu {
     private UUID id;
 
     private String ma;
+
 
     private String ten;
 

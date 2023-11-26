@@ -74,7 +74,10 @@ public class HoaDonControllerr {
     public ResponseEntity<?> ngayTimeLine(@PathVariable("idHD") String id){
         return  ResponseEntity.ok(lichSuHoaDonService.HoaDonTimeLine(UUID.fromString(id)));
     }
-
+    @GetMapping("/hoa-don-san-pham/{idHD}")
+    public ResponseEntity<?> SanPhamHoaDon(@PathVariable("idHD") String id){
+        return  ResponseEntity.ok(hoaDonService.detailHDSanPham(UUID.fromString(id)));
+    }
 //    public ResponseEntity<?> add(@RequestBody LichSuHoaDon khachHang){
 //        return  ResponseEntity.ok(hoaDonService.addLichSuHoaDon(khachHang));
 //    }

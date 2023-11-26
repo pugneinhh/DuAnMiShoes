@@ -25,6 +25,7 @@ public class KichThuocController {
     public ResponseEntity<?> add(@RequestBody KichThuoc kt) {
         int ktThem = kichThuocService.getALL().size();
         kt.setMa("KT" + "-" + (ktThem + 1));
+        kt.setTrangThai(1);
         return ResponseEntity.ok(kichThuocService.addKT(kt));
     }
 }

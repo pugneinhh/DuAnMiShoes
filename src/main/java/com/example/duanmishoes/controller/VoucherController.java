@@ -1,6 +1,7 @@
 package com.example.duanmishoes.controller;
 
 import com.example.duanmishoes.model.Voucher;
+import com.example.duanmishoes.model.VoucherSearch;
 import com.example.duanmishoes.service.VoucherService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.UUID;
@@ -23,11 +25,19 @@ public class VoucherController {
     VoucherService vs;
     @GetMapping("/hien-thi")
     public ResponseEntity<?> getALL(){
-        vs.checkHan();
+//        vs.checkHan();
         return ResponseEntity.ok(vs.getAll());
     }
     @PostMapping("/add")
     public ResponseEntity<?> add(@RequestBody Voucher v){
+        if(v.getLoaiVoucher()==null){
+            v.setLoaiVoucher("false");
+        }
+        if(v.getNgayBatDau().compareTo(new Timestamp(System.currentTimeMillis()))>0){
+            v.setTrangThai(0);
+        }else{
+            v.setTrangThai(1);
+        }
         v.setNgayTao(new Date(new java.util.Date().getTime()));
         return  ResponseEntity.ok(vs.addVoucher(v));
     }
@@ -52,5 +62,9 @@ public class VoucherController {
         Date dBD=new Date(d1.getTime());
         Date dKT=new Date(d2.getTime());
         return  ResponseEntity.ok(vs.getTim(key,dBD,dKT));
+    }
+    @PostMapping("/search-voucher")
+    public ResponseEntity<?> search(@RequestBody VoucherSearch voucherSearch){
+        return ResponseEntity.ok(vs.getSearch(voucherSearch));
     }
 }

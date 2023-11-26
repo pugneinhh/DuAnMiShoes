@@ -25,6 +25,7 @@ public class HangController {
     public ResponseEntity<?> add(@RequestBody Hang h) {
         int hThem = hangService.getALL().size();
         h.setMa("H" + "-" + (hThem + 1));
+        h.setTrangThai(1);
         return ResponseEntity.ok(hangService.addH(h));
     }
 }

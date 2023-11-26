@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public interface MauSacRespon extends JpaRepository<MauSac, UUID> {
     @Query(value = """
-    SELECT o.ma as ma ,o.ten as ten, o.trang_thai as trangThai FROM mau_sac o ORDER BY o.ma ASC
+    SELECT o.id as id,o.ma as ma ,o.ten as ten, o.trang_thai as trangThai FROM mau_sac o ORDER BY o.ma DESC
             """, nativeQuery = true)
     List<AdminMauSacRespon> getALLMS();
 }

@@ -12,6 +12,6 @@ public interface AdminKichThuocRespon {
     @Value("#{target.ten}")
     String getTen();
 
-    @Value("#{target.ma}")
+    @Value("#{target.trangThai}")
     String getTrangThai();
 }
