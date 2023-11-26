@@ -1,8 +1,17 @@
 
 package com.example.duanmishoes.model;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.UUID;
 
@@ -20,28 +29,20 @@ public class DiaChi {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(name = "ten_nguoi_nhan")
-    private String ten;
+    private String tenNguoiNhan;
 
-    @Column(name = "so_dien_thoai")
     private String sdt;
 
-    @Column(name = "dia_chi")
     private String diaChi;
 
-    @Column(name = "pho")
     private String pho;
 
-    @Column(name = "phuong")
     private String phuong;
 
-    @Column(name = "thanh_pho")
     private String thanhPho;
 
-    @Column(name = "quoc_gia")
     private String quocGia;
 
-    @Column(name = "trang_thai")
     private Integer trangThai;
 
 }

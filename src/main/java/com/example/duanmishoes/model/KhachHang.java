@@ -1,7 +1,17 @@
 package com.example.duanmishoes.model;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.sql.Date;
 import java.util.UUID;
@@ -21,21 +31,19 @@ public class KhachHang {
 
     @ManyToOne
     @JoinColumn(name = "dia_chi_id", referencedColumnName = "id")
-    private DiaChi diaChi;
+    private com.example.demo.model.DiaChi diaChi;
 
-    
     private String ma;
 
-    
     private String ten;
 
     private Date ngaySinh;
 
-    private String sdt;
+    private String soDienThoai;
 
     private String email;
 
-    private String image;
+    private String anh;
 
     private Date ngayThamGia;
 

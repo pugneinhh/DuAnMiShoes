@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class ChucVuService {
@@ -17,6 +15,10 @@ public class ChucVuService {
 
     public List<AdminChucVuRespon> getAllCV() {
         return chucVuRepository.getALLCV();
+    }
+
+    public ChucVu add(ChucVu chucVu) {
+        return chucVuRepository.save(chucVu);
     }
 
 

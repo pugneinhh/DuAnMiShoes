@@ -32,23 +32,21 @@ public class NhanVien {
     @JoinColumn(name = "chuc_vu_id", referencedColumnName = "id")
     private ChucVu chucVu;
 
-
     private String ma;
-
 
     private String ten;
 
-
     private String anh;
 
-   
     private String gioiTinh;
 
     private Date ngaySinh;
 
-    private String sdt;
-  
+    private String soDienThoai;
+
     private String email;
+
+    private String matKhau;
 
     private String cccd;
 
@@ -56,26 +54,17 @@ public class NhanVien {
 
     private String huyen;
 
-
     private String xa;
 
-    private String diaChiCuThe;
-
-    private String soDienThoai;
     private String diaChi;
 
-    private String matKhau;
-
-  
     private String nguoiTao;
 
-
     private String nguoiSua;
+
     private Date ngayTao;
 
- 
     private Date ngaySua;
 
- 
     private Integer trangThai;
 }

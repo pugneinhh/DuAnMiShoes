@@ -1,9 +1,25 @@
 
 package com.example.duanmishoes.model;
 
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 import jakarta.persistence.*;
 
 import lombok.*;
+
 
 import java.sql.Date;
 import java.util.UUID;
@@ -21,28 +37,20 @@ public class ChucVu {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-
-    @Column(name = "ma")
     private String ma;
 
 
-    @Column(name = "ten")
     private String ten;
 
-    @Column(name = "nguoi_tao")
     private String nguoiTao;
 
-    @Column(name = "nguoi_sua")
     private String nguoiSua;
 
-    @Column(name = "ngay_tao")
     @Temporal(TemporalType.DATE)
     private Date ngayTao;
 
-    @Column(name = "ngay_sua")
     @Temporal(TemporalType.DATE)
     private Date ngaySua;
 
-    @Column(name = "trang_thai")
     private Integer trangThai;
 }
