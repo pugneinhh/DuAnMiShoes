@@ -16,5 +16,5 @@ public interface AdminSanPhamRespon {
     int getSoLuong();
 
     @Value("#{target.trangThai}")
-    String getTrangThai();
+    int getTrangThai();
 }

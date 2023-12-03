@@ -4,10 +4,9 @@ package com.example.duanmishoes.controller;
 import com.example.duanmishoes.model.AdminCTSPRespon;
 
 import com.example.duanmishoes.model.KhuyenMai;
-import com.example.duanmishoes.model.Voucher;
 
+import com.example.duanmishoes.model.sanPhamSearch.CTSPSearch;
 import com.example.duanmishoes.service.CTSPService;
-import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,12 +26,22 @@ public class CTSPController {
     private CTSPService ctspService;
     @GetMapping("/showct/{idSP}")
     public ResponseEntity<?> getALLCTSP(@PathVariable("idSP") String id){
-        return new ResponseEntity<>(ctspService.getALLCTSP(UUID.fromString(id)), HttpStatus.FOUND);
+        return ResponseEntity.ok(ctspService.getALLCTSP(UUID.fromString(id)));
+    }
+
+    @PostMapping("/{idSP}/tim-kiem")
+    public ResponseEntity<?> search(@PathVariable("idSP") String id,@RequestBody CTSPSearch ctspSearch){
+        return ResponseEntity.ok(ctspService.getTim(UUID.fromString(id),ctspSearch));
     }
 
     @GetMapping("/showct")
     public ResponseEntity<?> getALLCTSP_1(@RequestParam String id){
         return new ResponseEntity<>(ctspService.getALLCTSP(UUID.fromString(id)), HttpStatus.OK);
+    }
+
+    @GetMapping("/detail/{idCT}")
+    public ResponseEntity<?> detail(@PathVariable("idCT") String idCT){
+        return ResponseEntity.ok(ctspService.detailCTSP(UUID.fromString(idCT)));
     }
 
     @PutMapping("/updateKM/{idCTSP}")
