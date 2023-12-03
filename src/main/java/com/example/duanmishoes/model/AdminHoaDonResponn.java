@@ -2,6 +2,8 @@ package com.example.duanmishoes.model;
 
 import org.springframework.beans.factory.annotation.Value;
 
+import java.sql.Date;
+
 public interface AdminHoaDonResponn {
 
 
@@ -30,6 +32,8 @@ public interface AdminHoaDonResponn {
 
     @Value("#{target.trangThai}")
     String getTrangThai();
+//    @Value("#{target.diaChiKH}")
+//    String getDiaChiKH();
 
 
 }

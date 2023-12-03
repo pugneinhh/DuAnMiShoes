@@ -8,6 +8,7 @@ import com.example.duanmishoes.model.SanPham;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 import java.util.UUID;
@@ -25,11 +26,18 @@ public interface CTSPRespon extends JpaRepository<ChiTietSanPham,UUID> {
             JOIN do_cao dc  on o.do_cao_id=dc.id
             JOIN danh_muc dm  on o.danh_muc_id=dm.id
             JOIN hang h  on o.hang_id=h.id
-            WHERE sp.id=:idSP ORDER BY o.id DESC
+            WHERE sp.id=:idSP
                      """, nativeQuery = true)
     List<AdminCTSPRespon> getALLCTSP(@Param("idSP") UUID idSP);
 
 
 
+    @Query(value = """
+            SELECT o.id 
+            FROM chi_tiet_san_pham o
+            JOIN khuyen_mai km  on o.khuyen_mai_id=km.id
+            WHERE km.id=:idKM ORDER BY o.id DESC
+                     """, nativeQuery = true)
+    List<UUID> getAllCTSPByKM(@Param("idKM") UUID idKM);
 
 }

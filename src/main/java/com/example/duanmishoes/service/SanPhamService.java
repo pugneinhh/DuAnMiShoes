@@ -32,4 +32,7 @@ public class SanPhamService {
 
     public SanPham addSP(SanPham sp){return sanPhamRespon.save(sp);}
 
+    public UUID getSPByCTSP(UUID id){
+        return sanPhamRespon.getIDSPbyCTSP(id);
+    }
 }

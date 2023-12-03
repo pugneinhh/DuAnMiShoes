@@ -25,6 +25,7 @@ public class MauSacController {
     public ResponseEntity<?> add(@RequestBody MauSac v) {
         int msThem = mauSacService.getALL().size();
         v.setMa("MS" + "-" + (msThem + 1));
+        v.setTrangThai(1);
         return ResponseEntity.ok(mauSacService.addMS(v));
     }
 }

@@ -25,6 +25,7 @@ public class DoCaoController {
     public ResponseEntity<?> add(@RequestBody DoCao dc) {
         int dcThem = doCaoService.getALL().size();
         dc.setMa("DC" + "-" + (dcThem + 1));
+        dc.setTrangThai(1);
         return ResponseEntity.ok(doCaoService.addDC(dc));
     }
 }
