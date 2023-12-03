@@ -13,5 +13,5 @@ public interface AdminDanhMucRespon {
     String getTen();
 
     @Value("#{target.trangThai}")
-    String getTrangThai();
+    int getTrangThai();
 }

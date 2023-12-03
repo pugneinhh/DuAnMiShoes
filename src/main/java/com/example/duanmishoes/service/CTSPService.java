@@ -1,6 +1,8 @@
 package com.example.duanmishoes.service;
 
 import com.example.duanmishoes.model.*;
+import com.example.duanmishoes.model.sanPhamSearch.CTSPSearch;
+import com.example.duanmishoes.model.sanPhamSearch.DanhMucSearch;
 import com.example.duanmishoes.respon.CTSPRespon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +23,10 @@ public class CTSPService {
     public List<AdminCTSPRespon> getALLCTSP(UUID id){
         return ctspRespon.getALLCTSP(id);
     }
-
+    public List<AdminCTSPRespon> getTim(UUID id, CTSPSearch ctspSearch) {
+        return ctspRespon.getTim(id,ctspSearch);
+    }
+    public AdminDetailCTSP detailCTSP(UUID id){return ctspRespon.detailCTSP(id);}
     public List<UUID> getALLCTSPByKM(UUID id){
         return ctspRespon.getAllCTSPByKM(id);
     }

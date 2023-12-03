@@ -8,6 +8,9 @@ public interface AdminCTSPRespon {
     @Value("#{target.idCTSP}")
     String getIdCTSP();
 
+    @Value("#{target.link}")
+    String getLink();
+
     @Value("#{target.tenSP}")
     String getTenSP();
 
@@ -42,5 +45,5 @@ public interface AdminCTSPRespon {
     String getMoTa();
 
     @Value("#{target.trangThai}")
-    String getTrangThai();
+    int getTrangThai();
 }
