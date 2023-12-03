@@ -31,7 +31,7 @@ public class KhachHang {
 
     @ManyToOne
     @JoinColumn(name = "dia_chi_id", referencedColumnName = "id")
-    private com.example.demo.model.DiaChi diaChi;
+    private DiaChi diaChi;
 
     private String ma;
 
