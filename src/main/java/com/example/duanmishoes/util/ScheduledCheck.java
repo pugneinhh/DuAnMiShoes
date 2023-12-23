@@ -10,6 +10,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -54,12 +55,29 @@ public class ScheduledCheck {
 
     @Scheduled(fixedDelayString = "${config.fixedDelayMillis}")
     public void checkVoucher(){
-        LocalDate localDate = LocalDate.now();
-        Date currentDate = Date.valueOf(localDate);
+        Timestamp now = new Timestamp(System.currentTimeMillis());
+//        LocalDate localDate = LocalDate.now();
+//        Date currentDate = Date.valueOf(localDate);
         List<Voucher> voucherList = voucherRespon.findAll();
         try {
             voucherList.forEach(v -> {
-                if (v.getNgayKetThuc().compareTo(currentDate) < 0) {
+                if(v.getNgayKetThuc().compareTo(now)>0){
+                v.setTrangThai(0);
+                voucherRespon.save(v);
+            }
+                if(v.getNgayBatDau().compareTo(now)>=0){
+                    v.setTrangThai(1);
+                    voucherRespon.save(v);
+                }
+                if(v.getNgayBatDau().compareTo(now)<0){
+                    v.setTrangThai(0);
+                    voucherRespon.save(v);
+                }
+            if(v.getLoaiVoucher()==null||v.getLoaiVoucher().equalsIgnoreCase("false")){
+                v.setSoLuong(0);
+                voucherRespon.save(v);
+            }
+                if (v.getNgayKetThuc().compareTo(now) < 0) {
                     v.setTrangThai(2);
                     voucherRespon.save(v);
                 }
